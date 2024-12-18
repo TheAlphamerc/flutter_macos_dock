@@ -1,32 +1,31 @@
-name: Flutter Web
+name: Deploy Flutter Web App to GitHub Pages
+
 on:
   push:
     branches:
       - master
+
 jobs:
   build:
-    name: Build Web
-    env:
-      my_secret: ${{secrets.commit_secret}}
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-      - run: |
-          flutter config --enable-web
-          flutter pub get
-      - run: |
-         flutter build web --release --dart-define=FLUTTER_WEB_USE_SKIA=true
-      - run: |
-          build/web
-          git init
-          git config --global user.email sonu.sharma045@gmail.com
-          git config --global user.name Sonu Sharma
-          git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/TheAlphamerc/flutter_macos_dock.git
-          git checkout -b gh-pages
-          git add --all
-          git commit -m "Update web"
-          git push origin gh-pages -f
+          flutter-version: '3.0.0' 
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build the web app
+        run: flutter build web --release
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
