@@ -152,7 +152,7 @@ class MacOSDockState<T extends Object> extends State<MacOSDock<T>> {
                     margin: EdgeInsets.only(
                       left: _draggedIndex != null
                           ? _hoveredIndex == index
-                              ? 30
+                              ? 68
                               : 0
                           : 0,
                       right: _draggedIndex != null
