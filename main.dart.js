@@ -45848,7 +45848,7 @@ $3(a,b,c){var s,r,q=this,p=null,o=q.b,n=q.a,m=q.c,l=m/68,k=A.a1R(B.b9,A.a3g(n.a.
 i.cO()
 i.CE(0,n.Aa(j,0,-15,-4),0)
 s=n.f!=null
-r=s?n.e===j?30:0:0
+r=s?n.e===j?68:0:0
 if(s)s=n.e===j&&j===n.ghu().length-1?30:0
 else s=0
 l=n.a.d.$2(o,l)
