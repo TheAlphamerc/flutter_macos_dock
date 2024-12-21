@@ -11,7 +11,7 @@ A highly customizable and fully animated dock widget component for Flutter, insp
 
 ## Preview
 
-[Click here to view live version](https://thealphamerc.github.io/flutter_macos_dock/)
+[Click here to view live version](https://dub.sh/macos_dock_demo)
 
 
 ## Contributing
